@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OOP_Basics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -61,34 +62,39 @@ namespace OOP_Basics
         }
     }
 
+    public class Carnivore : Animal
+    {
+        public Carnivore(string name, decimal weight, Dimensions dimensions, decimal speed, Food food) : base(name, weight, dimensions, speed)
+        {
+        }
+        public override double Energy()
+        {
+            return 0.2 - (1.0 / 5.0) * ((double)stomach.Average(food => (double)food.weight) + stomach.Sum(food => (double)food.energy));
+        }
+    }
+
     public class Herbivore : Animal
     {
-        public Herbivore(string name,  decimal weight, Dimensions dimensions, decimal speed) : base (name, weight, dimensions, speed)
+        public Herbivore(string name,  decimal weight, Dimensions dimensions, decimal speed, Food food) : base (name, weight, dimensions, speed)
         {
         }
         
         public override double Energy()
-            f
         {
-            return 0.5 + (1 / 3) * ((decimal)((float)stomach.Average(food => double)).weight)
+            return 0.5 + (1.0 / 3.0) * ((double)stomach.Average(food => (double)food.weight) + stomach.Sum(food => (double)food.energy));
         }
     }
 
     public class Omnivorous : Animal
     {
-        public Herbivore(string name, decimal weight, Dimensions dimensions, decimal speed) : base(name, weight, dimensions, speed)
+        public Omnivorous(string name, decimal weight, Dimensions dimensions, decimal speed, Food food) : base(name, weight, dimensions, speed)
         {
         }
-    }
 
-    public class Carnivore : Animal
-    {
-        public Herbivore(string name, decimal weight, Dimensions dimensions, decimal speed) : base(name, weight, dimensions, speed)
-        {
-        }
         public override double Energy()
         {
-
+            decimal weightCoef = stomach[0] is Plant ? 0.5m : -0.5m;
+            return 0.35 + (double) weightCoef * ((double)stomach.Average(food => (double)food.weight) + stomach.Sum(food => (double)food.energy));
         }
     }
 }

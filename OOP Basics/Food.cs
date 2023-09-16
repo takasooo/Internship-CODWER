@@ -34,9 +34,9 @@ namespace OOP_Basics
         }
     }
 
-    public class Plants : Food
+    public class Plant : Food
     {
-        public Plants(decimal weight, decimal energy) : base(weight, energy)
+        public Plant(decimal weight, decimal energy) : base(weight, energy)
         {
 
         }
