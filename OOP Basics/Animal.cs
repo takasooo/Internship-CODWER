@@ -14,8 +14,11 @@ namespace OOP_Basics
         public string name;
         public readonly decimal weight;
         private readonly Dimensions dimensions;
-        protected List<Food> stomach = new List<Food>();
+        public List<Food> stomach = new List<Food>();
         public readonly decimal speed;
+        public readonly decimal foodQuantity;
+        Food food;
+        public static int animalCount = 0;
 
 
 
@@ -23,11 +26,11 @@ namespace OOP_Basics
         {
             public readonly decimal length, width, height;
 
-            public Dimensions(decimal length, decimal width, decimal height)
+            public Dimensions(double length, double width, double height)
             {
-                this.length = length;
-                this.width = width;
-                this.height = height;
+                this.length = (decimal)length;
+                this.width = (decimal)width;
+                this.height = (decimal)height;
             }
         }
 
@@ -37,13 +40,15 @@ namespace OOP_Basics
             this.weight = weight;
             this.dimensions = dimensions;
             this.speed = speed;
+            animalCount++;
         }
 
-        public void IsEating(Food food)
+        public void IsEating(Food food, decimal foodQuantity)
         {
-            decimal foodMaxWeight = weight / 8;
 
-            if (food.weight <= foodMaxWeight)
+            decimal foodMaxWeight = (food.weight * foodQuantity) / 8;
+
+            if ((food.weight * foodQuantity) <= foodMaxWeight)
 
                 stomach.Add(food);
             Console.WriteLine("Is eating.");
@@ -52,7 +57,7 @@ namespace OOP_Basics
 
         public abstract double Energy();
 
-        public void IsRunning(Food food, decimal distance)
+        public void IsRunning(decimal distance)
         {
             decimal time;
 
@@ -64,7 +69,7 @@ namespace OOP_Basics
 
     public class Carnivore : Animal
     {
-        public Carnivore(string name, decimal weight, Dimensions dimensions, decimal speed, Food food) : base(name, weight, dimensions, speed)
+        public Carnivore(string name, decimal weight, Dimensions dimensions, decimal speed) : base(name, weight, dimensions, speed)
         {
         }
         public override double Energy()
@@ -75,7 +80,7 @@ namespace OOP_Basics
 
     public class Herbivore : Animal
     {
-        public Herbivore(string name,  decimal weight, Dimensions dimensions, decimal speed, Food food) : base (name, weight, dimensions, speed)
+        public Herbivore(string name,  decimal weight, Dimensions dimensions, decimal speed) : base (name, weight, dimensions, speed)
         {
         }
         
@@ -87,7 +92,7 @@ namespace OOP_Basics
 
     public class Omnivorous : Animal
     {
-        public Omnivorous(string name, decimal weight, Dimensions dimensions, decimal speed, Food food) : base(name, weight, dimensions, speed)
+        public Omnivorous(string name, decimal weight, Dimensions dimensions, decimal speed) : base(name, weight, dimensions, speed)
         {
         }
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOP_Basics
 {
-    public abstract class Food
+    public class Food
     {
         public decimal weight;
         public decimal energy;
