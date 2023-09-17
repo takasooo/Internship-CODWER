@@ -13,7 +13,7 @@ namespace OOP_Basics
     {
         public string name;
         public readonly decimal weight;
-        private readonly Dimensions dimension;
+        private readonly Dimensions dimensions;
         protected List<Food> stomach = new List<Food>();
         public readonly decimal speed;
 
@@ -35,7 +35,7 @@ namespace OOP_Basics
         {
             this.name = name;
             this.weight = weight;
-            this.dimension = dimensions;
+            this.dimensions = dimensions;
             this.speed = speed;
         }
 
