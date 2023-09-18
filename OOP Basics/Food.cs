@@ -30,20 +30,4 @@ namespace OOP_Basics
         }
 
     }
-
-    public class Meat : Food
-    {
-        public Meat (decimal weight, decimal energy) : base (weight, energy)
-        {
-
-        }
-    }
-
-    public class Plant : Food
-    {
-        public Plant(decimal weight, decimal energy) : base(weight, energy)
-        {
-
-        }
-    }
 }

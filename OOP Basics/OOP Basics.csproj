@@ -48,6 +48,10 @@
     <Compile Include="Animal.cs" />
     <Compile Include="Carnivore.cs" />
     <Compile Include="Food.cs" />
+    <Compile Include="Herbivore.cs" />
+    <Compile Include="Meat.cs" />
+    <Compile Include="Omnivorous.cs" />
+    <Compile Include="Plant.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

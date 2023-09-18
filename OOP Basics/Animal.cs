@@ -72,33 +72,4 @@ namespace OOP_Basics
             Console.WriteLine(Name + " is running for the distance of " + distance +" meters in " + time.ToString("#0.00") + " seconds");
         }
     }
-
-    public class Herbivore : Animal
-    {
-        public Herbivore(string name,  decimal weight, DimensionsEnum dimensions, decimal speed) : base (name, weight, dimensions, speed)
-        {
-        }
-        
-        public override double Energy()
-        {
-            return 0.5 + (1.0 / 3.0) * ((double)Stomach.Average(food => (double)food.Weight) + Stomach.Sum(food => (double)food.Energy));
-        }
-    }
-
-    public class Omnivorous : Animal
-    {
-        public Omnivorous(string name, decimal weight, DimensionsEnum dimensions, decimal speed) : base(name, weight, dimensions, speed)
-        {
-        }
-
-        public override double Energy()
-        {
-            decimal weightCoef = Stomach.Any() && Stomach[0] is Plant ? 0.5m : -0.5m;
-            return 0.35 + (double) weightCoef * ((double)Stomach.Average(food => (double)food.Weight) + Stomach.Sum(food => (double)food.Energy));
-        }
-    }
 }
-
-
-
-
