@@ -44,6 +44,7 @@ namespace OOP_Basics
             animalCount++;
         }
 
+        public abstract bool CanEat(Food food);
         public void IsEating(params  Food[] food)
         {
             foreach (var f in food) IsEating(f, 1);
@@ -54,10 +55,16 @@ namespace OOP_Basics
             decimal foodWeightToBe = //Stomach.DefaultIfEmpty().Sum(f => f.Weight) + 
                 food.Weight * foodQuantity;
 
-            if (foodWeightToBe <= foodMaxWeight)
+            
+            
+            if (foodWeightToBe <= foodMaxWeight && CanEat(food))
             {
                 for (int i = 0; i < foodQuantity; i++) Stomach.Add(food);
                 Console.WriteLine(Name + " is eating " +food.GetType().Name);
+            }
+            else
+            {
+                Console.WriteLine(Name + " cannot eat " + food.GetType().Name);
             }
         }
 
@@ -67,9 +74,24 @@ namespace OOP_Basics
         {
             decimal time;
 
+            if (Speed == 0 || Stomach.Sum(food => food.Energy) == 0)
+            {
+                Console.WriteLine(Name + "'s energy level or speed is zero.");
+            }
+            else
+            {
+                time = distance / (Speed / Stomach.Sum(food => food.Energy));
+                Console.WriteLine(Name + " is running for the distance of " + distance + " meters in " + time.ToString("#0.00") + " seconds");
+            }
+        }
 
-            time = distance / (Speed / Stomach.Sum(food => food.Energy));
-            Console.WriteLine(Name + " is running for the distance of " + distance +" meters in " + time.ToString("#0.00") + " seconds");
+        public override string ToString()
+        {
+            return $"Tip animal: {GetType().Name}\n" +
+                   $"Nume: {Name}\n" +
+                   $"Greutate: {Weight} kg\n" +
+                   $"Dimensiuni: {Dimensions.length} x {Dimensions.width} x {Dimensions.height}\n" +
+                   $"Viteza: {Speed} m/s";
         }
     }
 }

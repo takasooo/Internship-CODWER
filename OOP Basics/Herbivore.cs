@@ -12,6 +12,11 @@ namespace OOP_Basics
         {
             return 0.5 + (1.0 / 3.0) * ((double)Stomach.Average(food => (double)food.Weight) + Stomach.Sum(food => (double)food.Energy));
         }
+
+        public override bool CanEat(Food food)
+        {
+            return food is Plant;
+        }
     }
 }
 

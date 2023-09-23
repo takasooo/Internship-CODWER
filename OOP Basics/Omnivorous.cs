@@ -13,6 +13,11 @@ namespace OOP_Basics
             decimal weightCoef = Stomach.Any() && Stomach[0] is Plant ? 0.5m : -0.5m;
             return 0.35 + (double) weightCoef * ((double)Stomach.Average(food => (double)food.Weight) + Stomach.Sum(food => (double)food.Energy));
         }
+
+        public override bool CanEat(Food food)
+        {
+            return true;
+        }
     }
 }
 
