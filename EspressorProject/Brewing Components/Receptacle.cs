@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EspressorProject
+namespace EspressorProject.Brewing_Components
 {
-    internal class IndicatorLight
+    internal class Receptacle
     {
     }
 }

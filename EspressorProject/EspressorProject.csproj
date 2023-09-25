@@ -43,21 +43,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Boiler.cs" />
-    <Compile Include="BoilerHeater.cs" />
+    <Compile Include="Boiler Components\Boiler.cs" />
+    <Compile Include="Boiler Components\BoilerHeater.cs" />
+    <Compile Include="Brewing Components\Receptacle.cs" />
     <Compile Include="Espressor.cs" />
-    <Compile Include="FilterAndReceptacle.cs" />
-    <Compile Include="IndicatorLight.cs" />
-    <Compile Include="DeliveryPipe.cs" />
-    <Compile Include="PlateHeater.cs" />
-    <Compile Include="Pot.cs" />
-    <Compile Include="PressureReliefValve.cs" />
-    <Compile Include="PressureSensor.cs" />
+    <Compile Include="Brewing Components\Filter.cs" />
+    <Compile Include="Control and User Interface\IndicatorLight.cs" />
+    <Compile Include="Brewing Components\DeliveryPipe.cs" />
+    <Compile Include="Brewing Components\PlateHeater.cs" />
+    <Compile Include="Brewing Components\Pot.cs" />
+    <Compile Include="Boiler Components\PressureReliefValve.cs" />
+    <Compile Include="Brewing Components\PlateSensor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StartButton.cs" />
-    <Compile Include="WaterLevel.cs" />
-    <Compile Include="WaterSensor.cs" />
+    <Compile Include="Control and User Interface\StartButton.cs" />
+    <Compile Include="Boiler Components\WaterLevel.cs" />
+    <Compile Include="Boiler Components\WaterSensor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

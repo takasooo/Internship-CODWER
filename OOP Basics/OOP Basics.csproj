@@ -45,13 +45,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Animal.cs" />
-    <Compile Include="Carnivore.cs" />
-    <Compile Include="Food.cs" />
-    <Compile Include="Herbivore.cs" />
-    <Compile Include="Meat.cs" />
-    <Compile Include="Omnivorous.cs" />
-    <Compile Include="Plant.cs" />
+    <Compile Include="Animal\Animal.cs" />
+    <Compile Include="Animal\Carnivore.cs" />
+    <Compile Include="Food\Food.cs" />
+    <Compile Include="Animal\Herbivore.cs" />
+    <Compile Include="Food\Meat.cs" />
+    <Compile Include="Animal\Omnivorous.cs" />
+    <Compile Include="Food\Plant.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

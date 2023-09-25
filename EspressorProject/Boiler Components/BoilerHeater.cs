@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EspressorProject
 {
-    internal class WaterLevel
+    internal class BoilerHeater : Boiler { }
     {
     }
 }

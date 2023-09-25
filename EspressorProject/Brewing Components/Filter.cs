@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EspressorProject
 {
-    internal class PressureSensor
+    internal class Filter
     {
     }
 }
