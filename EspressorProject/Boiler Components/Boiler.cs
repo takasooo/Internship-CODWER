@@ -9,18 +9,29 @@ namespace EspressorProject
     public class Boiler
     {
 
-        public decimal currentWaterAmount = 0;
-        public int maxWaterAmount = 10;
-        public decimal filledWater;
-        public int waterMaxTemperature = 100;
+        public decimal currentWaterAmount; //ml
+        public int maxWaterAmount = 1000; //ml
+        public decimal filledWater; //ml
+        public int waterMaxTemperature = 100; //Celsius
 
         private IndicatorLight indicatorLight = new IndicatorLight();
+
+        public Boiler()
+        {
+        }
+
+        public Boiler(decimal currentWaterAmount, int maxWaterAmount, decimal filledWater)
+        {
+            this.currentWaterAmount = currentWaterAmount;
+            this.maxWaterAmount = maxWaterAmount;
+            this.filledWater = filledWater;
+        }
 
         public void FillWater(decimal filledWater)
         {
             this.filledWater = filledWater;
 
-            if (filledWater + currentWaterAmount < maxWaterAmount)
+            if (filledWater + currentWaterAmount < maxWaterAmount && filledWater + currentWaterAmount > maxWaterAmount)
             {
                 currentWaterAmount += filledWater;
                 if (indicatorLight.IsOn) { indicatorLight.TurnOff(); }
@@ -31,6 +42,6 @@ namespace EspressorProject
             }
         }
 
-        public void 
+
     }
 }

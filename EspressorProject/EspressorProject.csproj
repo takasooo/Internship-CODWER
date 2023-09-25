@@ -45,9 +45,8 @@
   <ItemGroup>
     <Compile Include="Boiler Components\Boiler.cs" />
     <Compile Include="Boiler Components\BoilerHeater.cs" />
-    <Compile Include="Brewing Components\Receptacle.cs" />
     <Compile Include="Espressor.cs" />
-    <Compile Include="Brewing Components\Filter.cs" />
+    <Compile Include="Brewing Components\FilterAndReceptacle.cs" />
     <Compile Include="Control and User Interface\IndicatorLight.cs" />
     <Compile Include="Brewing Components\DeliveryPipe.cs" />
     <Compile Include="Brewing Components\PlateHeater.cs" />

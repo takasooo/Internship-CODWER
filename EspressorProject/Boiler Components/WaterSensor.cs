@@ -9,16 +9,18 @@ namespace EspressorProject
     public class WaterSensor
     {
 
-        public bool IsWaterEmpty { get; private set; }
-
-        public WaterSensor() 
+        Boiler boiler = new Boiler();
+        IndicatorLight indicatorLight = new IndicatorLight();
+        public void NoWaterChecker()
         {
-            IsWaterEmpty = true;
-        }
-
-        public FillWater()
-        {
-            IsWaterEmpty = false;
+            if (boiler.currentWaterAmount == 0)
+            {
+                Console.WriteLine("No water in boiler. Please add water.");
+                if (!indicatorLight.IsOn)
+                {
+                    indicatorLight.TurnOn();
+                }
+            }
         }
     }
 }
