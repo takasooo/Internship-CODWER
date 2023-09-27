@@ -11,12 +11,14 @@ namespace EspressorProject
         private bool isOn = false;
         public void TurnOn()
         {
+            if (isOn) return;
             Console.WriteLine("The indicator is ON.");
             isOn = true;
         }
 
         public void TurnOff() 
         {
+            if (!isOn) return;
             Console.WriteLine("The indicator is OFF.");
             isOn = false;
         }

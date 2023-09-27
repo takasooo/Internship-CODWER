@@ -11,35 +11,37 @@ namespace EspressorProject
 
         public decimal currentWaterAmount; //ml
         public int maxWaterAmount = 1000; //ml
-        public decimal filledWater; //ml
+        //public decimal filledWater; //ml
         public int waterMaxTemperature = 100; //Celsius
 
         private IndicatorLight indicatorLight = new IndicatorLight();
+        private WaterLevel waterLevel;
 
         public Boiler()
         {
+            waterLevel = new WaterLevel(this, indicatorLight);
         }
 
-        public Boiler(decimal currentWaterAmount, int maxWaterAmount, decimal filledWater)
+        public Boiler(decimal currentWaterAmount, int maxWaterAmount) : this()
         {
             this.currentWaterAmount = currentWaterAmount;
             this.maxWaterAmount = maxWaterAmount;
-            this.filledWater = filledWater;
         }
 
         public void FillWater(decimal filledWater)
         {
-            this.filledWater = filledWater;
 
-            if (filledWater + currentWaterAmount < maxWaterAmount && filledWater + currentWaterAmount > maxWaterAmount)
+            if (filledWater + currentWaterAmount < maxWaterAmount)
             {
                 currentWaterAmount += filledWater;
                 if (indicatorLight.IsOn) { indicatorLight.TurnOff(); }
             } else
             {
+                currentWaterAmount = maxWaterAmount;
                 indicatorLight.TurnOn();
                 Console.WriteLine("You wanna add to much water. You can add maximum" + (maxWaterAmount - currentWaterAmount) + " litres of water.");
             }
+            waterLevel.WaterLevelChecker();
         }
 
 

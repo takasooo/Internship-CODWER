@@ -8,18 +8,28 @@ namespace EspressorProject
 {
     public class WaterLevel
     {
-
-        Boiler boiler = new Boiler();
-        IndicatorLight indicatorLight = new IndicatorLight();
+        private Boiler boiler;
+        private IndicatorLight indicatorLight;
+        public WaterLevel(Boiler boiler, IndicatorLight indicatorLight)
+        {
+            this.boiler = boiler;
+            this.indicatorLight = indicatorLight;
+        }
         public void WaterLevelChecker()
         {
-            if (boiler.currentWaterAmount < boiler.maxWaterAmount/2)
+            if (boiler.currentWaterAmount < boiler.maxWaterAmount / 2)
             {
                 Console.WriteLine("Water level low. Please add water.");
-                if (!indicatorLight.IsOn)
-                {
-                    indicatorLight.TurnOn();
-                }
+                indicatorLight.TurnOn();
+            }
+            else if (boiler.currentWaterAmount == boiler.maxWaterAmount)
+            {
+                Console.WriteLine("Water level low. Please add water.");
+                indicatorLight.TurnOn();
+            }
+            else
+            {
+                indicatorLight.TurnOff();
             }
         }
     }
