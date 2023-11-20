@@ -10,16 +10,13 @@ namespace EspressorProject
 {
     public class DeliveryPipe
     {
-        
-        Boiler boiler = new Boiler();
-        PressureReliefValve pressureRelief = new PressureReliefValve();
 
-        public void TakeWaterFromBoiler() 
+        public void TakeWaterFromBoiler(Boiler boiler, PressureReliefValve pressureReliefValve) 
         {
 
             decimal takenAmountOfWater;
 
-            if (pressureRelief.pressureReliefed == true)
+            if (pressureReliefValve.pressureReliefed == true)
             {
 
                 takenAmountOfWater = boiler.currentWaterAmount - 300;
@@ -28,7 +25,53 @@ namespace EspressorProject
 
         public void AddWaterToReceptacle()
         {
+         
+            
+        }
+    }
 
+    public class FilterAndReceptacle
+    {
+
+        public bool isReceptacleFull = true;
+        public decimal currentCoffeeAmount; //g
+        public int maxCoffeeAmount = 100; //g
+        public decimal filledCoffee; //g
+        public decimal doneCoffeeAmount; //ml
+
+        public void WaterIsFiltering()
+        {
+            Console.WriteLine("The water goes through the filter.");
+        }
+
+        public void CoffeeIsMade()
+        {
+            Console.WriteLine("Coffee is brewing. Please wait!");
+        }
+
+        public void FillReceptacle(IndicatorLight indicatorLight)
+        {
+            if (!isReceptacleFull)
+            {
+                Console.WriteLine("Please fill the receptacle with coffee grounds.");
+                indicatorLight.TurnOn();
+            }
+        }
+
+        public void FillCoffeeGrounds(decimal filledCoffee, IndicatorLight indicatorLight)
+        {
+            this.filledCoffee = filledCoffee;
+
+            if (filledCoffee + currentCoffeeAmount < maxCoffeeAmount && filledCoffee + currentCoffeeAmount > maxCoffeeAmount)
+            {
+                currentCoffeeAmount += filledCoffee;
+                indicatorLight.TurnOff();
+            }
+            else
+            {
+                indicatorLight.TurnOn();
+                Console.WriteLine("You wanna add to much coffee. You can add maximum" + (maxCoffeeAmount - currentCoffeeAmount) + " grams of coffee.");
+            }
         }
     }
 }

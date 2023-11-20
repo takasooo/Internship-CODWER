@@ -28,22 +28,88 @@ namespace EspressorProject
             this.maxWaterAmount = maxWaterAmount;
         }
 
-        public void FillWater(decimal filledWater)
+        public void FillWater(decimal filledWater, WaterLevel waterLevel, IndicatorLight indicatorLight, Boiler boiler)
         {
 
             if (filledWater + currentWaterAmount < maxWaterAmount)
             {
                 currentWaterAmount += filledWater;
-                if (indicatorLight.IsOn) { indicatorLight.TurnOff(); }
+                indicatorLight.TurnOff();
             } else
             {
                 currentWaterAmount = maxWaterAmount;
                 indicatorLight.TurnOn();
                 Console.WriteLine("You wanna add to much water. You can add maximum" + (maxWaterAmount - currentWaterAmount) + " litres of water.");
             }
-            waterLevel.WaterLevelChecker();
+            waterLevel.WaterLevelChecker(indicatorLight, boiler);
+        }
+    }
+
+    public class BoilerHeater
+    {
+        public int temperature;
+
+        public void HeatWater()
+        {
+            for (int i = 0; i <= 100; i += 20)
+            {
+                temperature = i;
+                Console.WriteLine("Water heated for " + temperature + "%");
+            }
+        }
+    }
+
+    public class PressureReliefValve
+    {
+
+        public bool pressureReliefed = false;
+
+        public void PressureRelief(BoilerHeater boilerHeater)
+        {
+            if(boilerHeater.temperature == 100)
+                Console.WriteLine("The pressure has been relieved successfully.");
+            pressureReliefed = true;
+        }
+    }
+
+    public class WaterLevel
+    {
+        private Boiler boiler;
+        private IndicatorLight indicatorLight;
+
+        public WaterLevel(Boiler boiler, IndicatorLight indicatorLight)
+        {
+            this.boiler = boiler;
+            this.indicatorLight = indicatorLight;
         }
 
+        public void WaterLevelChecker(IndicatorLight indicatorLight, Boiler boiler)
+        {
+            if (boiler.currentWaterAmount < boiler.maxWaterAmount / 2)
+            {
+                Console.WriteLine("Water level low. Please add water.");
+                indicatorLight.TurnOn();
+            }
+            else
+            {
+                indicatorLight.TurnOff();
+            }
+        }
 
+        public class WaterSensor
+        {
+
+            public void NoWaterChecker(IndicatorLight indicatorLight, Boiler boiler)
+            {
+                if (boiler.currentWaterAmount == 0)
+                {
+                    Console.WriteLine("No water in boiler. Please add water.");
+                    if (!indicatorLight.IsOn)
+                    {
+                        indicatorLight.TurnOn();
+                    }
+                }
+            }
+        }
     }
 }
