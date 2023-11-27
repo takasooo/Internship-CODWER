@@ -25,7 +25,7 @@ namespace EspressorProject
 
         public bool IsOn
         {
-            get { return IsOn; }
+            get { return isOn; }
         }
     }
 }

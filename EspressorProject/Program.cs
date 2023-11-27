@@ -10,6 +10,10 @@ namespace EspressorProject
     {
         static void Main(string[] args)
         {
+
+            Espressor espressor = new Espressor();
+
+            espressor.HandleUserInput();
         }
     }
 }

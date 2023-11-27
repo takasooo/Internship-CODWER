@@ -10,16 +10,22 @@ namespace EspressorProject
     {
         public bool potIsInPlace = true;
 
-        public void TakeOutPot()
+        public void RemovePot()
         {
             Console.WriteLine("You took out the pot.");
             potIsInPlace = false;
         }
 
-        public void PutInPot()
+        public void InsertPot()
         {
             Console.WriteLine("You put in the pot.");
             potIsInPlace = true;
+        }
+
+        public bool IsPotInPlace
+        {
+            get { return potIsInPlace; }
+            private set { potIsInPlace = value; }
         }
         //receives coffee and contains it; should have a weight so if its weight is 0 then the plate sensor reacts
     }
@@ -48,7 +54,7 @@ namespace EspressorProject
 
         public PlateSensor(Pot pot)
         {
-            if (pot.potIsInPlace == false)
+            if (!pot.IsPotInPlace)
             {
                 Console.WriteLine("Please put the pot on the plate!");
             }
