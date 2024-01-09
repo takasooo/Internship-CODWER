@@ -8,18 +8,21 @@ using System.Threading.Tasks;
 
 namespace Delegates___Events
 {
-    public class Price
-    {
 
-        private static Dictionary<Currency, decimal> ExchangeRate { get; set; }
-        private Currency currency {  get; set; }
+    public enum Currency
+    {
+        MDL,
+        EUR,
+        USD
+    }
+    public class Price
+    { 
+
+        private static Dictionary<Currency, decimal> ExchangeRate = new Dictionary<Currency, decimal>();
+        private Currency currency { get; set; }
         private decimal Value { get; set; }
 
-        enum Currency
-        {
-            MDL,
-            EUR,
-            USD
-        }
     }
+
+
 }

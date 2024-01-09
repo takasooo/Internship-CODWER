@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Delegates___Events
 {
-    public class Producer
+    public class Manufacturer
     {
 
-        private string Name {  get; set; }
+        private string name {  get; set; }
         private List<Discount> discounts { get; set; }
 
     }

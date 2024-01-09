@@ -12,8 +12,10 @@ namespace Delegates___Events
 
         private Guid Id { get; set; }
         private string Name { get; set; }
-        private Price price { get; set; }
+        private Price Price { get; set; }
         private int Stock { get; set; }
-        private Producer Producer { get; set; }
+        private Manufacturer Manufacturer { get; set; }
+
     }
+
 }

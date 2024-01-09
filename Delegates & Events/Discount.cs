@@ -11,8 +11,7 @@ namespace Delegates___Events
 
         private string Name {  get; set; }
         private DateTime Date { get; set; }
-
-
+        private Action<Product> Apply { get; set; }
 
     }
 }
